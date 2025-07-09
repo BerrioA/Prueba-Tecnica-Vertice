@@ -14,9 +14,9 @@ export const Address = sequelize.define("addresses", {
     type: DataTypes.UUID,
     allowNull: false,
   },
-  // Calle
-  street: {
-    type: DataTypes.STRING(100),
+  // Calle, Carrera, Avenida, Diagonal, etc.
+  address: {
+    type: DataTypes.STRING(150),
     allowNull: false,
   },
   // Ciudad
@@ -31,15 +31,14 @@ export const Address = sequelize.define("addresses", {
   },
   // Código postal
   zip_code: {
-    type: DataTypes.STRING(10),
-    allowNull: true,
-  },
-  // País
-  country: {
-    type: DataTypes.STRING(50),
+    type: DataTypes.STRING(6),
     allowNull: false,
+    validate: {
+      isNumeric: true,
+      len: [6, 6],
+    },
   },
-  // Establecer dirección como principal o no
+  // Establecer dirección como principal o no.
   is_default: {
     type: DataTypes.BOOLEAN,
     defaultValue: false,

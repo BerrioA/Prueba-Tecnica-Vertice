@@ -54,7 +54,7 @@ export const User = sequelize.define("users", {
   // Rol del usuario
   role_id: {
     type: DataTypes.UUID,
-    allowNull: false,
+    allowNull: true,
   },
 });
 

@@ -2,7 +2,7 @@ import express from "express";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import helmet from "helmet";
-
+import authRoutes from "./routes/auth.routes.js";
 
 const app = express();
 
@@ -22,5 +22,6 @@ app.use(cors(corsOptions));
 app.use(express.urlencoded({ extended: true }));
 
 // Rutas
+app.use("/api/tiendavertical/v1/auth", authRoutes);
 
 export default app;
