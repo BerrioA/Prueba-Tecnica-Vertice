@@ -1,5 +1,10 @@
-import { registerUserService } from "../services/auth.service.js";
+import {
+  registerUserService,
+  loginUserService,
+  refreshTokenService,
+} from "../services/auth.service.js";
 
+// Controlador encargado de registrar un usuario
 export const registerUser = async (req, res) => {
   try {
     const result = await registerUserService(req.body);
@@ -11,3 +16,33 @@ export const registerUser = async (req, res) => {
     });
   }
 };
+
+// Controlador encargado de realizar el login de usuario
+export const login = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    const result = await loginUserService({ email, password }, res);
+
+    return res.status(200).json(result);
+  } catch (error) {
+    console.error("Error al iniciar sesión:", error);
+
+    if (error.message === "INVALID_CREDENTIALS") {
+      return res.status(403).json({ message: "Credenciales incorrectas." });
+    }
+
+    return res.status(500).json({ message: "Error interno del servidor." });
+  }
+};
+
+// Controlador encargado de solicitar el refreshToken
+export const refreshToken = (req, res) => {
+  try {
+    const { token, expiresIn } = refreshTokenService(req.uid, req.role_id);
+    return res.status(200).json({ token, expiresIn });
+  } catch (error) {
+    console.error("Error al generar el RefreshToken:", error);
+    return res.status(500).json({ message: "Error interno del servidor." });
+  }
+};
+
