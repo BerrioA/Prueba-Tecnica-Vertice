@@ -2,8 +2,9 @@
   "name": "prueba-tecnica-vertice",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "dev": "node --watch --env-file=src/.env src/index.js",
+    "dev": "node --watch --env-file=.env src/index.js",
     "start": "node src/index.js"
   },
   "keywords": [],
