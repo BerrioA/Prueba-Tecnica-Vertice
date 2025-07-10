@@ -1,6 +1,8 @@
 # 📦 Prueba Técnica - VÉRTICE
 
-Bienvenido a la prueba técnica de desarrollo backend para VÉRTICE. Esta API RESTful permite registrar usuarios, autenticar sesiones, gestionar productos y crear órdenes de compra. Ha sido construida con Node.js, Express y Sequelize.
+Bienvenido a la prueba técnica de desarrollo backend para **VÉRTICE**.  
+Esta API RESTful permite registrar usuarios, autenticar sesiones, gestionar productos y crear órdenes de compra.  
+Ha sido construida con **Node.js**, **Express** y **PostgreSQL** siguiendo una arquitectura modular y escalable.
 
 ---
 
@@ -8,12 +10,13 @@ Bienvenido a la prueba técnica de desarrollo backend para VÉRTICE. Esta API RE
 
 - **Node.js** (v22+)
 - **Express.js**
-- **Sequelize ORM**
+- **Sequelize (ORM)**
 - **PostgreSQL**
 - **JWT (JSON Web Tokens)**
+- **Swagger** (Documentación API)
 - **Express-Validator**
 - **Helmet**, **CORS**, **Cookie-Parser**
-- **Swagger** (Documentación interactiva)
+- **Docker** y **Docker Compose**
 
 ---
 
@@ -21,35 +24,36 @@ Bienvenido a la prueba técnica de desarrollo backend para VÉRTICE. Esta API RE
 
 ```
 src/
-├── config/                # Configuraciones (DB)
-├── controllers/           # Lógica de controladores por dominio
+├── config/                # Configuración DB
+├── controllers/           # Controladores por módulo
 ├── middlewares/           # Middlewares: auth, roles, validaciones
-├── models/                # Modelos Sequelize
-├── routes/                # Rutas agrupadas por recursos
-├── services/              # Lógica de negocio por módulo
-├── utils/                 # Tokens
-├── docs/                  # Documentación Swagger
-├── app.js                 # Configuración de app
-└── index.js               # Inicio del servidor
+├── models/                # Modelos de datos (Sequelize)
+├── routes/                # Rutas por dominio
+├── services/              # Lógica de negocio separada
+├── utils/                 # Manejo de tokens
+├── docs/                  # Configuración Swagger
+├── app.js                 # App principal Express
+└── index.js               # Punto de entrada del servidor
 ```
 
 ---
 
 ## ⚙️ Requisitos Previos
 
-- Node.js instalado (`v22+`)
-- PostgreSQL en ejecución
-- Cliente como Postman o Swagger UI
+- Node.js v22+
+- PostgreSQL (local o Docker)
+- Postman o navegador (para probar API)
+- Docker (opcional)
 
 ---
 
-## 📦 Instalación y Ejecución
+## 🛠️ Instalación Manual (sin Docker)
 
 1. **Clona el repositorio**
 
 ```bash
-git clone https://github.com/BerrioA/Prueba-Tecnica-Vertice.git
-cd prueba-tecnica-vertice
+git clone https://github.com/BerrioA/Prueba-Tecnica-Vertice
+cd Prueba-Tecnica-Vertice
 ```
 
 2. **Instala las dependencias**
@@ -58,30 +62,80 @@ cd prueba-tecnica-vertice
 npm install
 ```
 
-3. **Crea tu archivo `.env`**
+3. **Crea el archivo `.env` en la raíz**
 
 ```env
 PORT=3000
-DB_NAME=nombre_de_tu_base_de_datos
-DB_USER=usuario_postgres
-DB_PASSWORD=tu_contraseña
+DB_NAME=vertice_db
+DB_USER=admin
+DB_PASSWORD=admin123
 HOST=localhost
 DB_DIALECT=postgres
+<<<<<<< HEAD
 JWT_SECRET=clave_secreta_para_jwt
 JWT_REFRESH=clave_refresh_jwt
 SECRET_ENCRIPT=clave_para_hashear
+=======
+JWT_SECRET=clave_secreta
+JWT_REFRESH=clave_refresh
+SECRET_ENCRIPT=otra_clave
+>>>>>>> Desarrollo
 NODE_ENV=developer
-
 ```
 
-4. **Ejecuta la app**
+4. **Ejecuta el servidor**
 
 ```bash
 npm run dev
 ```
 
-5. **Base de datos**
-   La base de datos se sincroniza automáticamente al iniciar la app. Asegúrate de que exista `vertice_db` en PostgreSQL.
+---
+
+## 🚢 Dockerización
+
+También puedes levantar el proyecto completo con **Docker + PostgreSQL** en segundos.
+
+### 📂 Archivos incluidos
+
+- `Dockerfile`
+- `docker-compose.yml`
+- `.dockerignore`
+
+### ▶️ Pasos para ejecutar con Docker
+
+1. **Crear `.env` en la raíz (importante):**
+
+```env
+PORT=3000
+DB_NAME=vertice_db
+DB_USER=admin
+DB_PASSWORD=admin123
+HOST=db
+DB_DIALECT=postgres
+JWT_SECRET=clave_secreta
+JWT_REFRESH=clave_refresh
+SECRET_ENCRIPT=otra_clave
+NODE_ENV=production
+```
+
+> ⚠️ Usa `HOST=db` ya que así se llama el servicio en Docker.
+
+2. **Construir y ejecutar los contenedores**
+
+```bash
+docker-compose up --build
+```
+
+3. **Verifica en el navegador o Postman**
+
+- API base: [http://localhost:3000](http://localhost:3000)
+- Swagger docs: [http://localhost:3000/api-docs](http://localhost:3000/api-docs)
+
+4. **Detener contenedores**
+
+```bash
+docker-compose down
+```
 
 ---
 
@@ -90,29 +144,30 @@ npm run dev
 ### 🔐 Autenticación
 
 | Método | Ruta                           | Descripción                              |
-| ------ | ------------------------------ | ---------------------------------------- |
+|--------|--------------------------------|------------------------------------------|
 | POST   | `/auth/register`               | Registro de nuevo usuario (cliente)      |
 | POST   | `/auth/login`                  | Inicio de sesión                         |
 | GET    | `/auth/refreshToken`           | Renovación del token de acceso           |
 | GET    | `/auth/logout`                 | Cierre de sesión                         |
-| POST   | `/auth/private/register-admin` | Registro del primer admin (una sola vez) |
+| POST   | `/auth/private/register-admin` | Registro único del primer administrador  |
 
 ### 👤 Usuario
 
 | Método | Ruta       | Descripción                   |
-| ------ | ---------- | ----------------------------- |
-| GET    | `/user/me` | Datos del usuario autenticado |
+|--------|------------|-------------------------------|
+| GET    | `/user/me` | Perfil del usuario autenticado|
 
 ### 📦 Productos
 
 | Método | Ruta            | Descripción                     |
-| ------ | --------------- | ------------------------------- |
+|--------|-----------------|---------------------------------|
 | GET    | `/products`     | Lista básica de productos       |
 | GET    | `/products/:id` | Detalle completo de un producto |
-| POST   | `/products`     | Registrar producto (solo admin) |
+| POST   | `/products`     | Crear producto (solo admin)     |
 
 ### 🧾 Órdenes
 
+<<<<<<< HEAD
 | Método | Ruta               | Descripción                         |
 | ------ | ------------------ | ----------------------------------- |
 | POST   | `/orders`          | Crear orden con múltiples productos |
@@ -129,37 +184,73 @@ npm run dev
 - Transacciones en la creación de órdenes para mantener integridad.
 - Se evita pasar el precio manualmente; se toma desde el producto.
 - Separación estricta por capas: **controller**, **service**, **model**.
+=======
+| Método | Ruta               | Descripción                              |
+|--------|--------------------|------------------------------------------|
+| POST   | `/orders`          | Crear orden con múltiples productos      |
+| GET    | `/orders`          | Ver historial de órdenes del usuario     |
+| GET    | `/orders/allusers` | Ver todas las órdenes (solo admin)       |
+>>>>>>> Desarrollo
 
 ---
 
 ## 📄 Documentación con Swagger
 
-La documentación Swagger está disponible en:
+Disponible automáticamente al correr la API:
 
 ```
-GET /api-docs
+http://localhost:3000/api-docs
 ```
 
 Incluye:
 
 - Schemas de entrada/salida
 - Parámetros validados
-- Ejemplos de payloads
-- Mensajes de error
+- Payloads de ejemplo
+- Códigos de respuesta
 
 ---
 
+<<<<<<< HEAD
 ## 🧠 Recomendaciones de uso
 
 - Para registrar el primer administrador usar `/auth/register-admin` (una sola vez).
 - Luego, registrar usuarios normales con `/auth/register`.
 - Las rutas de productos y órdenes están protegidas según el rol.
 - Revisar los middlewares `requireToken`, `verifyAdmin`, `verifyClient`.
+=======
+## 📌 Consideraciones Técnicas
+
+- Autenticación JWT con expiración y refresh token
+- Validación de entrada con Express-Validator
+- Protección de rutas por rol (`Admin`, `Cliente`)
+- Transacciones para crear órdenes
+- Lógica desacoplada (servicios, controladores, middlewares)
+
+---
+
+## 📦 Despliegue en Render (opcional)
+
+La API puede desplegarse en [Render](https://render.com) configurando:
+
+- **Start Command:** `npm start`
+- **Docker Deploy:** activado
+- Variables de entorno desde `.env`
+>>>>>>> Desarrollo
 
 ---
 
 ## 👨‍💻 Autor
 
 **Alejandro L. Berrío O.**  
+<<<<<<< HEAD
 Backend Developer – Prueba técnica VÉRTICE 2025  
 [GitHub](https://github.com/BerrioA/Prueba-Tecnica-Vertice)
+=======
+Backend Developer – Prueba técnica VÉRTICE 2025
+
+- 🌐 [GitHub](https://github.com/BerrioA)
+- 💼 [LinkedIn](https://www.linkedin.com/in/alejandroberrio/)
+- 📧 ingalejandroberrio@gmail.com
+- 📱 300 430 1256
+>>>>>>> Desarrollo
