@@ -1,3 +1,4 @@
+import { validateAdminRegister } from "./admin.validation.js";
 import { requireRefreshToken, requireToken } from "./auth.middlewares.js";
 import {
   validateUserRegister,
@@ -10,7 +11,8 @@ import {
   validateProductRegister,
 } from "./product.validation.js";
 import { verifyAdmin, verifyClient } from "./role.middlewares.js";
-validateExistingUser;
+
+
 export {
   validateExistingUser,
   validateUserRegister,
@@ -22,4 +24,5 @@ export {
   validateProductRegister,
   validateProductId,
   validateOrderCreate,
+  validateAdminRegister,
 };

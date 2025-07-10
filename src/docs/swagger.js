@@ -1,7 +1,7 @@
 import swaggerJSDoc from "swagger-jsdoc";
 import swaggerUi from "swagger-ui-express";
 
-// Definición básica de Swagger (OpenAPI 3.0)
+// Documentacion base con Swagger
 const options = {
   definition: {
     openapi: "3.0.0",
@@ -16,7 +16,7 @@ const options = {
       },
     ],
   },
-  apis: ["./src/routes/*.js"], // <-- ajusta si tienes tus rutas en otra carpeta
+  apis: ["./src/routes/*.js"],
 };
 
 export const swaggerSpec = swaggerJSDoc(options);
@@ -24,6 +24,6 @@ export const swaggerSpec = swaggerJSDoc(options);
 export const swaggerDocs = (app) => {
   app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
   console.log(
-    `🧾 Documentación Swagger disponible en http://localhost:3000/api-docs`
+    `🧾 Documentación Vertice disponible en http://localhost:3000/api-docs`
   );
 };

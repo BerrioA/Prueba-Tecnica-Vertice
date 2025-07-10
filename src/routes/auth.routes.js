@@ -17,7 +17,7 @@ const router = Router();
  * @swagger
  * /auth/register:
  *   post:
- *     summary: Registra un nuevo usuario
+ *     summary: Registra un nuevo usuario (como cliente)
  *     tags: [Auth]
  *     requestBody:
  *       required: true
