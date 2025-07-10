@@ -149,24 +149,6 @@ Incluye:
 
 ---
 
-## 🧪 Testing (opcional)
-
-La configuración para testing está lista (aunque no se incluyen tests):
-
-```bash
-npm test
-```
-
----
-
-## 📬 Postman (opcional)
-
-También se incluye una colección Postman para facilitar las pruebas:
-
-- `PT_TIENDAVERTICE.postman_collection.json`
-
----
-
 ## 🧠 Recomendaciones para el Evaluador
 
 - Para registrar el primer administrador usar `/auth/register-admin` (una sola vez).
