@@ -122,8 +122,8 @@ docker-compose up --build
 
 3. **Verifica en el navegador o Postman**
 
-- API base: [http://localhost:3000](http://localhost:3000/api/ptvertice/v1)
-- Swagger docs: [http://localhost:3000/api-docs](http://localhost:3000/api/ptvertice/v1/api-docs)
+- API base: [http://localhost:3000/api/ptvertice/v1](http://localhost:3000/api/ptvertice/v1)
+- Swagger docs: [http://localhost:3000/api/ptvertice/v1/api-docs](http://localhost:3000/api/ptvertice/v1/api-docs)
 
 4. **Detener contenedores**
 
@@ -137,35 +137,35 @@ docker-compose down
 
 ### 🔐 Autenticación
 
-| Método | Ruta                           | Descripción                              |
-|--------|--------------------------------|------------------------------------------|
-| POST   | `/auth/register`               | Registro de nuevo usuario (cliente)      |
-| POST   | `/auth/login`                  | Inicio de sesión                         |
-| GET    | `/auth/refreshToken`           | Renovación del token de acceso           |
-| GET    | `/auth/logout`                 | Cierre de sesión                         |
-| POST   | `/auth/private/register-admin` | Registro único del primer administrador  |
+| Método | Ruta                           | Descripción                             |
+| ------ | ------------------------------ | --------------------------------------- |
+| POST   | `/auth/register`               | Registro de nuevo usuario (cliente)     |
+| POST   | `/auth/login`                  | Inicio de sesión                        |
+| GET    | `/auth/refreshToken`           | Renovación del token de acceso          |
+| GET    | `/auth/logout`                 | Cierre de sesión                        |
+| POST   | `/auth/private/register-admin` | Registro único del primer administrador |
 
 ### 👤 Usuario
 
-| Método | Ruta       | Descripción                   |
-|--------|------------|-------------------------------|
-| GET    | `/user/me` | Perfil del usuario autenticado|
+| Método | Ruta       | Descripción                    |
+| ------ | ---------- | ------------------------------ |
+| GET    | `/user/me` | Perfil del usuario autenticado |
 
 ### 📦 Productos
 
 | Método | Ruta            | Descripción                     |
-|--------|-----------------|---------------------------------|
+| ------ | --------------- | ------------------------------- |
 | GET    | `/products`     | Lista básica de productos       |
 | GET    | `/products/:id` | Detalle completo de un producto |
 | POST   | `/products`     | Crear producto (solo admin)     |
 
 ### 🧾 Órdenes
 
-| Método | Ruta               | Descripción                              |
-|--------|--------------------|------------------------------------------|
-| POST   | `/orders`          | Crear orden con múltiples productos      |
-| GET    | `/orders`          | Ver historial de órdenes del usuario     |
-| GET    | `/orders/allusers` | Ver todas las órdenes (solo admin)       |
+| Método | Ruta               | Descripción                          |
+| ------ | ------------------ | ------------------------------------ |
+| POST   | `/orders`          | Crear orden con múltiples productos  |
+| GET    | `/orders`          | Ver historial de órdenes del usuario |
+| GET    | `/orders/allusers` | Ver todas las órdenes (solo admin)   |
 
 ---
 
