@@ -12,7 +12,7 @@ const options = {
     },
     servers: [
       {
-        url: "https://pt-vertice-alejandroberrio.onrender.com/api-docs/api/ptvertice/v1",
+        url: "http://localhost:3000/api/ptvertice/v1",
       },
     ],
   },
@@ -24,6 +24,6 @@ export const swaggerSpec = swaggerJSDoc(options);
 export const swaggerDocs = (app) => {
   app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
   console.log(
-    `🧾 Documentación Vertice disponible en http://localhost:3000/api-docs`
+    `🧾 Documentación Vertice disponible en http://localhost:3000/api/ptvertice/v1/api-docs`
   );
 };

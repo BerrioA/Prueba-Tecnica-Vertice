@@ -122,8 +122,8 @@ docker-compose up --build
 
 3. **Verifica en el navegador o Postman**
 
-- API base: [http://localhost:3000](http://localhost:3000)
-- Swagger docs: [http://localhost:3000/api-docs](http://localhost:3000/api-docs)
+- API base: [http://localhost:3000](http://localhost:3000/api/ptvertice/v1)
+- Swagger docs: [http://localhost:3000/api-docs](http://localhost:3000/api/ptvertice/v1/api-docs)
 
 4. **Detener contenedores**
 
