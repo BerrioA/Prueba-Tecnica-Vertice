@@ -1,5 +1,9 @@
 import express from "express";
-import { registerProduct } from "../controllers/index.js";
+import {
+  getAllProducts,
+  getProductById,
+  registerProduct,
+} from "../controllers/index.js";
 import {
   requireToken,
   validateProductRegister,
@@ -15,5 +19,7 @@ app.post(
   validateProductRegister,
   registerProduct
 );
+app.get("/", getAllProducts);
+app.get("/:productId", getProductById);
 
 export default app;
