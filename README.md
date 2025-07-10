@@ -70,7 +70,6 @@ DB_DIALECT=postgres
 JWT_SECRET=clave_secreta_para_jwt
 JWT_REFRESH=clave_refresh_jwt
 SECRET_ENCRIPT=clave_para_hashear
-FRONTEND_URL=http://localhost:5173
 NODE_ENV=developer
 
 ```
