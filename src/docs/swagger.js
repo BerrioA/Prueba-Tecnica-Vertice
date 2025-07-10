@@ -22,7 +22,11 @@ const options = {
 export const swaggerSpec = swaggerJSDoc(options);
 
 export const swaggerDocs = (app) => {
-  app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+  app.use(
+    "/api/ptvertice/v1/api-docs",
+    swaggerUi.serve,
+    swaggerUi.setup(swaggerSpec)
+  );
   console.log(
     `🧾 Documentación Vertice disponible en http://localhost:3000/api/ptvertice/v1/api-docs`
   );

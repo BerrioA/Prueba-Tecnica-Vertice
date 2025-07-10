@@ -18,7 +18,7 @@ import {
 const router = Router();
 /**
  * @swagger
- * auth/private/register-admin:
+ * /auth/private/register-admin:
  *   post:
  *     summary: Registrar primer administrador del sistema
  *     tags: [Auth]
