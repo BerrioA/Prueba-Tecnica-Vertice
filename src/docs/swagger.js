@@ -12,7 +12,7 @@ const options = {
     },
     servers: [
       {
-        url: "http://localhost:3000/api/ptvertice/v1",
+        url: "https://pt-vertice-alejandroberrio.onrender.com/api-docs/api/ptvertice/v1",
       },
     ],
   },
