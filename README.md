@@ -154,7 +154,7 @@ Un access token (JWT) que expira en 15 minutos.
 Un refresh token, más duradero (15 horas), que se guarda en una cookie segura HttpOnly.
 
 ✅ Acceso a rutas protegidas
-Para acceder a rutas como /user/me, /products, /orders, debes enviar el refresh token en el header:
+Para acceder a rutas como /user/me, /orders, debes enviar el refresh token en el header:
 
 ```
 Authorization: Bearer <refreshToken>
