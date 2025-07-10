@@ -18,10 +18,10 @@ import {
 const router = Router();
 /**
  * @swagger
- * /api/ptvertice/v1/auth/private/register-admin:
+ * auth/private/register-admin:
  *   post:
  *     summary: Registrar primer administrador del sistema
- *     tags: [Autenticación]
+ *     tags: [Auth]
  *     description: Este endpoint permite registrar un único usuario con rol Administrador. Solo puede ser utilizado si aún no existe un administrador registrado.
  *     requestBody:
  *       required: true
