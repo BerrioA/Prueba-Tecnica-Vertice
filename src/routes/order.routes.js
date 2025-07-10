@@ -1,10 +1,20 @@
-import express from "express";
-import { createOrder, getOrdersByUser } from "../controllers/index.js";
-import { requireToken } from "../middlewares/index.js";
+import { Router } from "express";
+import {
+  createOrder,
+  getAllOrders,
+  getOrdersByUser,
+} from "../controllers/index.js";
+import {
+  requireToken,
+  validateOrderCreate,
+  verifyAdmin,
+  verifyClient,
+} from "../middlewares/index.js";
 
-const router = express.Router();
+const router = Router();
 
-router.post("/", requireToken, createOrder);
-router.get("/", requireToken, getOrdersByUser);
+router.post("/", requireToken, verifyClient, validateOrderCreate, createOrder);
+router.get("/", requireToken, verifyClient, getOrdersByUser);
+router.get("/allusers", requireToken, verifyAdmin, getAllOrders);
 
 export default router;

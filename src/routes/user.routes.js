@@ -1,9 +1,9 @@
-import express from "express";
+import { Router } from "express";
 import { profile } from "../controllers/index.js";
 import { requireToken } from "../middlewares/index.js";
 
-const app = express();
+const router = Router();
 
-app.get("/me", requireToken, profile);
+router.get("/me", requireToken, profile);
 
-export default app;
+export default router;

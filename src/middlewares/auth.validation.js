@@ -1,5 +1,7 @@
 import { body } from "express-validator";
+import { Op } from "sequelize";
 import { validationResultExpress } from "./express-validator.js";
+import { User } from "../models/users.model.js";
 
 // Función para normalizar los textos con la primera letra en mayuscula.
 const firstLetter = (str) => {
@@ -177,3 +179,42 @@ export const loginValidation = [
 
   validationResultExpress,
 ];
+
+// Validaciones para evitar usuarios duplicados
+export const validateExistingUser = async (req, res, next) => {
+  try {
+    const { email, document_number } = req.body.user;
+
+    // Validar si el usuario ya existe mediante el correo electrónico o el número de documento
+    const existingUser = await User.findOne({
+      where: {
+        [Op.or]: [{ email }, { document_number }],
+      },
+    });
+
+    if (existingUser) {
+      if (email === existingUser.email) {
+        return res.status(400).json({
+          error: "Correo electrónico ya está registrado.",
+        });
+      }
+
+      if (document_number === existingUser.document_number) {
+        return res.status(400).json({
+          error: "Este número de documento ya está registrado.",
+        });
+      }
+    }
+
+    next();
+  } catch (error) {
+    console.error(
+      "Error en el middleware validacion de usuario existente:",
+      error
+    );
+
+    return res.status(500).json({
+      error: "Error interno del servidor",
+    });
+  }
+};

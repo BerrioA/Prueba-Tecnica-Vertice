@@ -88,4 +88,3 @@ export const logoutService = (req, res) => {
 
   return { cleared: true, message: "Sesión cerrada correctamente." };
 };
-

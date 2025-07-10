@@ -63,7 +63,7 @@ User.beforeCreate(async (user) => {
   if (!user.role_id) {
     try {
       const userRole = await Role.findOne({
-        where: { role_name: "User" },
+        where: { role_name: "Cliente" },
       });
 
       if (userRole) {

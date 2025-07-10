@@ -1,4 +1,4 @@
-import { body } from "express-validator";
+import { body, param } from "express-validator";
 import { validationResultExpress } from "./express-validator.js";
 
 // Función para normalizar los textos con la primera letra en mayuscula.
@@ -76,6 +76,17 @@ export const validateProductRegister = [
     .matches(/^[A-Za-zÁÉÍÓÚáéíóúÑñ\s\-&]+$/)
     .withMessage("La categoría contiene caracteres no válidos.")
     .customSanitizer(firstLetter)
+    .escape(),
+
+  validationResultExpress,
+];
+
+export const validateProductId = [
+  param("productId")
+    .notEmpty()
+    .withMessage("El ID del producto es obligatorio.")
+    .isUUID()
+    .withMessage("El ID del producto debe ser un UUID válido.")
     .escape(),
 
   validationResultExpress,

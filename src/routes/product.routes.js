@@ -1,4 +1,4 @@
-import express from "express";
+import { Router } from "express";
 import {
   getAllProducts,
   getProductById,
@@ -6,20 +6,21 @@ import {
 } from "../controllers/index.js";
 import {
   requireToken,
+  validateProductId,
   validateProductRegister,
   verifyAdmin,
 } from "../middlewares/index.js";
 
-const app = express();
+const router = Router();
 
-app.post(
+router.post(
   "/",
   requireToken,
   verifyAdmin,
   validateProductRegister,
   registerProduct
 );
-app.get("/", getAllProducts);
-app.get("/:productId", getProductById);
+router.get("/", getAllProducts);
+router.get("/:productId", validateProductId, getProductById);
 
-export default app;
+export default router;

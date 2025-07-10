@@ -1,5 +1,6 @@
 import { Role } from "../models/roles.model.js";
 
+// Funcion encarada de retornar el token en string
 const validateRole = async (role_id) => {
   try {
     const role = await Role.findByPk(role_id, { attributes: ["role_name"] });
@@ -12,11 +13,11 @@ const validateRole = async (role_id) => {
       case "Admin":
         return "Admin";
 
-      case "User":
-        return "User";
+      case "Cliente":
+        return "Cliente";
 
       default:
-        return "Rol no existente";
+        return "Acceso denegado";
     }
   } catch (error) {
     console.error(
@@ -53,22 +54,22 @@ export const verifyAdmin = async (req, res, next) => {
 };
 
 // Middleware encargado de validar el rol Usuario
-export const verifyUser = async (req, res, next) => {
+export const verifyClient = async (req, res, next) => {
   try {
     const roleUser = await validateRole(req.role_id);
 
-    if (roleUser === "User") {
+    if (roleUser === "Cliente") {
       return next();
     }
 
     return res.status(400).json({
-      message: "Acceso denegado, solo usuario Usuario autenticado.",
+      message: "Acceso denegado, solo usuario Cliente.",
     });
   } catch (error) {
     console.error("Error al validar el rol:", error);
 
     return res.status(500).json({
-      error: "Error al validar el rol de usuario.",
+      error: "Error al validar el rol de Cliente.",
     });
   }
 };

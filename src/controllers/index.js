@@ -10,7 +10,11 @@ import {
   registerProduct,
 } from "./product.controller.js";
 import { profile } from "./user.controller.js";
-import { createOrder, getOrdersByUser } from "./order.controller.js";
+import {
+  createOrder,
+  getOrdersByUser,
+  getAllOrders,
+} from "./order.controller.js";
 
 export {
   registerUser,
@@ -23,4 +27,5 @@ export {
   getProductById,
   createOrder,
   getOrdersByUser,
+  getAllOrders,
 };

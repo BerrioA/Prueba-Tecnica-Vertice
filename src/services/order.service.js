@@ -2,7 +2,9 @@ import { Order } from "../models/orders.model.js";
 import { OrderItem } from "../models/orderItems.model.js";
 import { Product } from "../models/products.model.js";
 import { sequelize } from "../config/db.js";
+import { User } from "../models/users.model.js";
 
+// Servicio que gestiona la creacion de una orden
 export const createOrderService = async (uid, items) => {
   const t = await sequelize.transaction();
   try {
@@ -57,6 +59,7 @@ export const createOrderService = async (uid, items) => {
   }
 };
 
+// Servicio que gestiona las ordenes de un usuario autenticado
 export const getOrdersByUserService = async (uid) => {
   const orders = await Order.findAll({
     where: { user_id: uid },
@@ -72,5 +75,60 @@ export const getOrdersByUserService = async (uid) => {
     order: [["createdAt", "DESC"]],
   });
 
-  return orders;
+  /* Transformación de los datos para una respuesta más limpia, 
+  para que asi el front pueda integrar esta respuesta de manera mas optima */
+  const formattedOrders = orders.map((order) => ({
+    order_id: order.id,
+    total: order.total,
+    items: order.items.map((item) => ({
+      product_name: item.product.name,
+      unit_price: item.unit_price,
+      quantity: item.quantity,
+      subtotal: item.subtotal,
+    })),
+  }));
+
+  return formattedOrders;
+};
+
+// Servicio que gestiona la obtención de todas las ordenes (solo para administradores)
+export const getAllOrdersService = async () => {
+  const orders = await Order.findAll({
+    include: [
+      {
+        model: OrderItem,
+        as: "items",
+        include: {
+          model: Product,
+          as: "product",
+          attributes: ["name", "price"],
+        },
+      },
+      {
+        model: User,
+        as: "user",
+        attributes: ["name", "last_name", "email"],
+      },
+    ],
+    order: [["createdAt", "DESC"]],
+  });
+
+  const formattedOrders = orders.map((order) => ({
+    order_id: order.id,
+    total: order.total,
+    user: {
+      id: order.user_id,
+      name: order.user?.name,
+      last_name: order.user?.last_name,
+      email: order.user?.email,
+    },
+    items: order.items.map((item) => ({
+      product_name: item.product.name,
+      unit_price: item.unit_price,
+      quantity: item.quantity,
+      subtotal: item.subtotal,
+    })),
+  }));
+
+  return formattedOrders;
 };
