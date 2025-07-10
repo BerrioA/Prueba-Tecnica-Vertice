@@ -1,4 +1,5 @@
 import {
+  registerAdmin,
   registerUser,
   login,
   refreshToken,
@@ -15,7 +16,6 @@ import {
   getOrdersByUser,
   getAllOrders,
 } from "./order.controller.js";
-import { registerAdmin } from "./admin.controller.js";
 
 export {
   registerUser,
@@ -29,5 +29,5 @@ export {
   createOrder,
   getOrdersByUser,
   getAllOrders,
-  registerAdmin
+  registerAdmin,
 };

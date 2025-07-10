@@ -11,7 +11,7 @@ import {
   validateProductRegister,
 } from "./product.validation.js";
 import { verifyAdmin, verifyClient } from "./role.middlewares.js";
-
+import { validateAdminExistence } from "./validateAdminExistence.js";
 
 export {
   validateExistingUser,
@@ -25,4 +25,5 @@ export {
   validateProductId,
   validateOrderCreate,
   validateAdminRegister,
+  validateAdminExistence,
 };

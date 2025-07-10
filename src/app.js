@@ -6,9 +6,9 @@ import authRoutes from "./routes/auth.routes.js";
 import userRoutes from "./routes/user.routes.js";
 import productRoutes from "./routes/product.routes.js";
 import orderRoutes from "./routes/order.routes.js";
-import adminRoutes from "./routes/admin.routes.js";
-const app = express();
 import { swaggerDocs } from "./docs/swagger.js";
+
+const app = express();
 
 // Configuracion de CORS (Aqui estoy permitiendo el acceso desde el puesto 5173 ya que lo integre con React)
 const corsOptions = {
@@ -30,7 +30,6 @@ app.use("/api/ptvertice/v1/auth", authRoutes);
 app.use("/api/ptvertice/v1/user", userRoutes);
 app.use("/api/ptvertice/v1/products", productRoutes);
 app.use("/api/ptvertice/v1/orders", orderRoutes);
-app.use("/api/ptvertice/v1/private", adminRoutes);
 
 swaggerDocs(app);
 export default app;
