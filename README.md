@@ -1,4 +1,3 @@
-
 # 📦 Prueba Técnica - VÉRTICE
 
 Bienvenido a la prueba técnica de desarrollo backend para VÉRTICE. Esta API RESTful permite registrar usuarios, autenticar sesiones, gestionar productos y crear órdenes de compra. Ha sido construida con Node.js, Express y Sequelize.
@@ -47,17 +46,20 @@ src/
 ## 📦 Instalación y Ejecución
 
 1. **Clona el repositorio**
+
 ```bash
 git clone https://github.com/BerrioA/Prueba-Tecnica-Vertice.git
 cd prueba-tecnica-vertice
 ```
 
 2. **Instala las dependencias**
+
 ```bash
 npm install
 ```
 
 3. **Crea tu archivo `.env`**
+
 ```env
 PORT=3000
 DB_NAME=nombre_de_tu_base_de_datos
@@ -74,12 +76,13 @@ NODE_ENV=developer
 ```
 
 4. **Ejecuta la app**
+
 ```bash
 npm run dev
 ```
 
 5. **Base de datos**
-La base de datos se sincroniza automáticamente al iniciar la app. Asegúrate de que exista `vertice_db` en PostgreSQL.
+   La base de datos se sincroniza automáticamente al iniciar la app. Asegúrate de que exista `vertice_db` en PostgreSQL.
 
 ---
 
@@ -87,35 +90,35 @@ La base de datos se sincroniza automáticamente al iniciar la app. Asegúrate de
 
 ### 🔐 Autenticación
 
-| Método | Ruta                       | Descripción                              |
-|--------|----------------------------|------------------------------------------|
-| POST   | `/auth/register`           | Registro de nuevo usuario (cliente)      |
-| POST   | `/auth/login`              | Inicio de sesión                         |
-| GET    | `/auth/refreshToken`       | Renovación del token de acceso           |
-| GET    | `/auth/logout`             | Cierre de sesión                         |
-| POST   | `/auth/register-admin`     | Registro del primer admin (una sola vez) |
+| Método | Ruta                           | Descripción                              |
+| ------ | ------------------------------ | ---------------------------------------- |
+| POST   | `/auth/register`               | Registro de nuevo usuario (cliente)      |
+| POST   | `/auth/login`                  | Inicio de sesión                         |
+| GET    | `/auth/refreshToken`           | Renovación del token de acceso           |
+| GET    | `/auth/logout`                 | Cierre de sesión                         |
+| POST   | `/auth/private/register-admin` | Registro del primer admin (una sola vez) |
 
 ### 👤 Usuario
 
-| Método | Ruta      | Descripción                         |
-|--------|-----------|-------------------------------------|
-| GET    | `/user/me`| Datos del usuario autenticado       |
+| Método | Ruta       | Descripción                   |
+| ------ | ---------- | ----------------------------- |
+| GET    | `/user/me` | Datos del usuario autenticado |
 
 ### 📦 Productos
 
-| Método | Ruta                  | Descripción                          |
-|--------|-----------------------|--------------------------------------|
-| GET    | `/products`           | Lista básica de productos            |
-| GET    | `/products/:id`       | Detalle completo de un producto      |
-| POST   | `/products`           | Registrar producto (solo admin)      |
+| Método | Ruta            | Descripción                     |
+| ------ | --------------- | ------------------------------- |
+| GET    | `/products`     | Lista básica de productos       |
+| GET    | `/products/:id` | Detalle completo de un producto |
+| POST   | `/products`     | Registrar producto (solo admin) |
 
 ### 🧾 Órdenes
 
-| Método | Ruta              | Descripción                                  |
-|--------|-------------------|----------------------------------------------|
-| POST   | `/orders`         | Crear orden con múltiples productos          |
-| GET    | `/orders`         | Historial del usuario autenticado            |
-| GET    | `/orders/allusers`| Ver todas las órdenes (solo admin)           |
+| Método | Ruta               | Descripción                         |
+| ------ | ------------------ | ----------------------------------- |
+| POST   | `/orders`          | Crear orden con múltiples productos |
+| GET    | `/orders`          | Historial del usuario autenticado   |
+| GET    | `/orders/allusers` | Ver todas las órdenes (solo admin)  |
 
 ---
 
@@ -139,6 +142,7 @@ GET /api-docs
 ```
 
 Incluye:
+
 - Schemas de entrada/salida
 - Parámetros validados
 - Ejemplos de payloads
@@ -159,6 +163,7 @@ npm test
 ## 📬 Postman (opcional)
 
 También se incluye una colección Postman para facilitar las pruebas:
+
 - `PT_TIENDAVERTICE.postman_collection.json`
 
 ---
