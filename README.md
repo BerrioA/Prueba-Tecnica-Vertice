@@ -71,15 +71,9 @@ DB_USER=admin
 DB_PASSWORD=admin123
 HOST=localhost
 DB_DIALECT=postgres
-<<<<<<< HEAD
-JWT_SECRET=clave_secreta_para_jwt
-JWT_REFRESH=clave_refresh_jwt
-SECRET_ENCRIPT=clave_para_hashear
-=======
 JWT_SECRET=clave_secreta
 JWT_REFRESH=clave_refresh
 SECRET_ENCRIPT=otra_clave
->>>>>>> Desarrollo
 NODE_ENV=developer
 ```
 
@@ -167,30 +161,11 @@ docker-compose down
 
 ### 🧾 Órdenes
 
-<<<<<<< HEAD
-| Método | Ruta               | Descripción                         |
-| ------ | ------------------ | ----------------------------------- |
-| POST   | `/orders`          | Crear orden con múltiples productos |
-| GET    | `/orders`          | Historial del usuario autenticado   |
-| GET    | `/orders/allusers` | Ver todas las órdenes (solo admin)  |
-
----
-
-## 🧠 Consideraciones Técnicas
-
-- Autenticación vía JWT con expiración (`15min`) y refresh token (`15h`).
-- Middleware de validación y protección de rutas (`requireToken`).
-- Roles diferenciados (`Admin`, `Cliente`) protegidos con middlewares.
-- Transacciones en la creación de órdenes para mantener integridad.
-- Se evita pasar el precio manualmente; se toma desde el producto.
-- Separación estricta por capas: **controller**, **service**, **model**.
-=======
 | Método | Ruta               | Descripción                              |
 |--------|--------------------|------------------------------------------|
 | POST   | `/orders`          | Crear orden con múltiples productos      |
 | GET    | `/orders`          | Ver historial de órdenes del usuario     |
 | GET    | `/orders/allusers` | Ver todas las órdenes (solo admin)       |
->>>>>>> Desarrollo
 
 ---
 
@@ -211,14 +186,6 @@ Incluye:
 
 ---
 
-<<<<<<< HEAD
-## 🧠 Recomendaciones de uso
-
-- Para registrar el primer administrador usar `/auth/register-admin` (una sola vez).
-- Luego, registrar usuarios normales con `/auth/register`.
-- Las rutas de productos y órdenes están protegidas según el rol.
-- Revisar los middlewares `requireToken`, `verifyAdmin`, `verifyClient`.
-=======
 ## 📌 Consideraciones Técnicas
 
 - Autenticación JWT con expiración y refresh token
@@ -236,21 +203,15 @@ La API puede desplegarse en [Render](https://render.com) configurando:
 - **Start Command:** `npm start`
 - **Docker Deploy:** activado
 - Variables de entorno desde `.env`
->>>>>>> Desarrollo
 
 ---
 
 ## 👨‍💻 Autor
 
 **Alejandro L. Berrío O.**  
-<<<<<<< HEAD
-Backend Developer – Prueba técnica VÉRTICE 2025  
-[GitHub](https://github.com/BerrioA/Prueba-Tecnica-Vertice)
-=======
 Backend Developer – Prueba técnica VÉRTICE 2025
 
 - 🌐 [GitHub](https://github.com/BerrioA)
 - 💼 [LinkedIn](https://www.linkedin.com/in/alejandroberrio/)
 - 📧 ingalejandroberrio@gmail.com
 - 📱 300 430 1256
->>>>>>> Desarrollo
