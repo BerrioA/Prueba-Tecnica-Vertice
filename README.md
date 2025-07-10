@@ -201,7 +201,7 @@ Esto devolverá un nuevo access token, si el refresh token aún es válido.
 Disponible automáticamente al correr la API:
 
 ```
-http://localhost:3000/api-docs
+http://localhost:3000/api/ptvertice/v1/api-docs
 ```
 
 Incluye:
