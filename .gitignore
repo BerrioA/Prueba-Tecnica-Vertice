@@ -1,2 +1,33 @@
-node_modules
+# Node modules
+node_modules/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Env files
 .env
+.env.test
+
+# Coverage
+coverage/
+*.lcov
+
+# Compiled output
+dist/
+build/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker
+docker-compose.override.yml
+docker-compose*.log
+Dockerfile*
+*.tar
+*.pid
+
+# Database volumes
+postgres_data/

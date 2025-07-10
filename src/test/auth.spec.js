@@ -1,14 +1,13 @@
-// __tests__/auth.spec.js
 import request from "supertest";
 import app from "../src/app.js";
 import { sequelize } from "../src/config/db.js";
 
 beforeAll(async () => {
-  await sequelize.sync({ force: true }); // Reinicia la DB antes de correr los tests
+  await sequelize.sync({ force: true });
 });
 
 afterAll(async () => {
-  await sequelize.close(); // Cierra conexión al finalizar
+  await sequelize.close();
 });
 
 describe("🧪 Pruebas de autenticación", () => {
@@ -52,6 +51,5 @@ describe("🧪 Pruebas de autenticación", () => {
     expect(res.body).toHaveProperty("token");
     expect(typeof res.body.token).toBe("string");
 
-    // Guarda el token para futuras pruebas si deseas
   });
 });
