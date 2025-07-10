@@ -8,7 +8,7 @@ const validateRole = async (role_id) => {
       return "Rol no encontrado";
     }
 
-    switch (role.role) {
+    switch (role.role_name) {
       case "Admin":
         return "Admin";
 
