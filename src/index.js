@@ -13,7 +13,7 @@ async function main() {
     //  await sequelize.sync({ force: true });
 
     //Este comando permite realizar cambios en la base de datos sin perder algunos campos de registro dentro de esta misma
-    await sequelize.sync({ alter: true });
+    await sequelize.sync({ force: true });
 
     const PORT = process.env.PORT || 3000;
     app.listen(PORT, () => {

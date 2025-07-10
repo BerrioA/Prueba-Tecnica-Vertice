@@ -5,10 +5,29 @@
   "type": "module",
   "scripts": {
     "dev": "node --watch --env-file=.env src/index.js",
-    "start": "node src/index.js"
+    "start": "node src/index.js",
+    "test": "cross-env NODE_ENV=test jest --runInBand --detectOpenHandles"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "prueba tecnica vertice",
+    "api-rest",
+    "nodejs",
+    "express",
+    "sequelize",
+    "postgresql",
+    "jwt",
+    "autenticacion",
+    "ordenes",
+    "ecommerce",
+    "productos",
+    "usuarios",
+    "backend",
+    "tienda-en-linea",
+    "relaciones",
+    "roles",
+    "proyecto-tecnico"
+  ],
+  "author": "Alejandro Luis Berrio Orozco",
   "license": "ISC",
   "description": "",
   "dependencies": {
@@ -21,6 +40,13 @@
     "jsonwebtoken": "^9.0.2",
     "pg": "^8.16.3",
     "pg-hstore": "^2.3.4",
-    "sequelize": "^6.37.7"
+    "sequelize": "^6.37.7",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "jest": "^30.0.4",
+    "supertest": "^7.1.3"
   }
 }
