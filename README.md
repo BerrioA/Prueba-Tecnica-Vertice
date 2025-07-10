@@ -149,7 +149,7 @@ Incluye:
 
 ---
 
-## 🧠 Recomendaciones para el Evaluador
+## 🧠 Recomendaciones de uso
 
 - Para registrar el primer administrador usar `/auth/register-admin` (una sola vez).
 - Luego, registrar usuarios normales con `/auth/register`.
