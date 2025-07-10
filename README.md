@@ -172,7 +172,7 @@ También se incluye una colección Postman para facilitar las pruebas:
 - Para registrar el primer administrador usar `/auth/register-admin` (una sola vez).
 - Luego, registrar usuarios normales con `/auth/register`.
 - Las rutas de productos y órdenes están protegidas según el rol.
-- Revisar los middlewares `requireToken`, `verifyAdmin`, `verifyUser`.
+- Revisar los middlewares `requireToken`, `verifyAdmin`, `verifyClient`.
 
 ---
 
@@ -180,4 +180,4 @@ También se incluye una colección Postman para facilitar las pruebas:
 
 **Alejandro L. Berrío O.**  
 Backend Developer – Prueba técnica VÉRTICE 2025  
-[GitHub](https://github.com/tu-usuario)
+[GitHub](https://github.com/BerrioA/Prueba-Tecnica-Vertice)
