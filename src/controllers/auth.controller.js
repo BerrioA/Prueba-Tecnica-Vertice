@@ -2,6 +2,7 @@ import {
   registerUserService,
   loginUserService,
   refreshTokenService,
+  logoutService,
 } from "../services/auth.service.js";
 
 // Controlador encargado de registrar un usuario
@@ -46,3 +47,14 @@ export const refreshToken = (req, res) => {
   }
 };
 
+// Controlador encargado de cerrar la sesion del usuario autenticado
+export const logout = (req, res) => {
+  try {
+    const result = logoutService(req, res);
+
+    return res.status(200).json({ message: result.message });
+  } catch (error) {
+    console.error("Error al intentar cerrar sesión:", error);
+    return res.status(500).json({ message: "Error interno del servidor." });
+  }
+};

@@ -62,8 +62,6 @@ export const loginUserService = async ({ email, password }, res) => {
     throw new Error("INVALID_CREDENTIALS");
   }
 
-  console.log(user);
-
   // Generar tokens
   const { token, expiresIn } = generateToken(user.id);
   generateRefreshToken(user.id, user.role_id, res);
@@ -75,3 +73,19 @@ export const loginUserService = async ({ email, password }, res) => {
 export const refreshTokenService = (uid, role_id) => {
   return generateToken(uid, role_id);
 };
+
+// Servicio que gestiona el logout de un usuario autenticado
+export const logoutService = (req, res) => {
+  if (!req?.cookies?.refreshToken) {
+    return { cleared: false, message: "No hay sesión activa." };
+  }
+
+  res.clearCookie("refreshToken", {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "strict",
+  });
+
+  return { cleared: true, message: "Sesión cerrada correctamente." };
+};
+

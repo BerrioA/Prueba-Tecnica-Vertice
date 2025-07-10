@@ -42,4 +42,8 @@ export const Product = sequelize.define("products", {
     type: DataTypes.STRING(50),
     allowNull: false,
   },
+  created_by: {
+    type: DataTypes.UUID,
+    allowNull: false,
+  },
 });

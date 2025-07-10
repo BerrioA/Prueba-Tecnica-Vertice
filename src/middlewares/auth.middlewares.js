@@ -60,3 +60,4 @@ export const requireToken = (req, res, next) => {
       .send({ error: tokenVerificationErrors[error.message] });
   }
 };
+

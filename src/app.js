@@ -4,6 +4,7 @@ import cors from "cors";
 import helmet from "helmet";
 import authRoutes from "./routes/auth.routes.js";
 import userRoutes from "./routes/user.routes.js";
+import productRoutes from "./routes/product.routes.js";
 
 const app = express();
 
@@ -25,5 +26,6 @@ app.use(express.urlencoded({ extended: true }));
 // Rutas
 app.use("/api/tiendavertical/v1/auth", authRoutes);
 app.use("/api/tiendavertical/v1/user", userRoutes);
+app.use("/api/tiendavertical/v1/product", productRoutes);
 
 export default app;
