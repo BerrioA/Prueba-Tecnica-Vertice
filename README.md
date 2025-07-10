@@ -126,7 +126,7 @@ npm run dev
 
 - Autenticación vía JWT con expiración (`15min`) y refresh token (`15h`).
 - Middleware de validación y protección de rutas (`requireToken`).
-- Roles diferenciados (`Admin`, `User`) protegidos con middlewares.
+- Roles diferenciados (`Admin`, `Cliente`) protegidos con middlewares.
 - Transacciones en la creación de órdenes para mantener integridad.
 - Se evita pasar el precio manualmente; se toma desde el producto.
 - Separación estricta por capas: **controller**, **service**, **model**.
